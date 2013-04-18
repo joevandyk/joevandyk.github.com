@@ -78,3 +78,5 @@ combined with this function to get somewhat randomized IDs.
      1241588087
      1500453386   
 
+
+Coming next: How to generate small unique random strings suitable for primary keys.
