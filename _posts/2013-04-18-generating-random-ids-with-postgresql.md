@@ -3,7 +3,7 @@ layout: post
 title: "Generating Random Primary Keys with PostgreSQL"
 description: "How to do this"
 category: 
-tags: []
+tags: ["postgresql"]
 ---
 {% include JB/setup %}
 
@@ -50,8 +50,7 @@ I've found the best way to do it is to define the following function:
     select pseudo_encrypt(1); => 1241588087
     select pseudo_encrypt(2); => 1500453386
     select pseudo_encrypt(2); => 1500453386
-    select pseudo_encrypt(30000);
-    select pseudo_encrypt(30000);
+    select pseudo_encrypt(484839329); => 7423122
 
 This is known as a [Feistel Cipher](http://en.wikipedia.org/wiki/Feistel_cipher).
 As you can see, given the same input, it'll create the same output. And there is 
