@@ -25,6 +25,7 @@ You could use UUIDs, but that takes up additional storage space and can make URL
 And you might need numeric IDs for some reason.
 I've found the best way to do it is to define the following function:
 
+    -- Taken from http://wiki.postgresql.org/wiki/Pseudo_encrypt
     CREATE OR REPLACE FUNCTION pseudo_encrypt(VALUE int) returns bigint AS $$
     DECLARE
     l1 int;
@@ -54,9 +55,25 @@ I've found the best way to do it is to define the following function:
 
 This is known as a [Feistel Cipher](http://en.wikipedia.org/wiki/Feistel_cipher).
 As you can see, given the same input, it'll create the same output. And there is 
-a 1-1 ratio of input to output.
+a 1:1 ratio of input to output.
 
 This means you can use a [sequence](http://www.postgresql.org/docs/9.2/static/sql-createsequence.html)
 combined with this function to get somewhat randomized IDs. 
 
-<i>To be continued...</i>
+    create sequence random_int_seq;
+    create function make_random_id() returns bigint as $$
+      select pseudo_encrypt(nextval('random_int_seq')::int)
+    $$ language sql;
+
+    create table f (id integer primary key default make_random_id() );
+
+    insert into f values (default);
+    insert into f values (default);
+
+    select * from f;
+
+         id
+    ────────────
+     1241588087
+     1500453386   
+
