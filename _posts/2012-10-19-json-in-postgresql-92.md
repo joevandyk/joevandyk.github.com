@@ -64,7 +64,8 @@ And have this information be available to every application that accesses your d
 Enter postgresql’s json support.
 
 This is the json we want returned:
-   [
+
+    [
      {  id: 1,
          email_address: 'joe@tanga.com',
          line_items: [
