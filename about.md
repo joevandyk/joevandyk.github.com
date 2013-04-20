@@ -6,7 +6,7 @@ group: navigation
 ---
 {% include JB/setup %}
 
-I'm the CTO / main programmer for Tanga.com.
+I'm the CTO / main programmer for [Tanga.com](https://www.tanga.com).
 
 I live in Seattle.
 
