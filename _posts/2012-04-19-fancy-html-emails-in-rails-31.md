@@ -7,7 +7,6 @@ tags: [email, rails]
 ---
 {% include JB/setup %}
 
-Fancy HTML Emails with Rails 3.1
 Getting HTML emails to look nice is a pain.  Most email clients can’t use stylesheets,
 so you have to embed all the styles inline in the HTML.  You also have to write a separate
 plain-text version of the email.  And popular email clients (Outlook, Windows Live Mail, etc)
@@ -15,7 +14,11 @@ render html email using some very weird rules.
 
 Here’s what our order email looks like in Gmail:
 
-Here’s what it looks like on the iPhone:
+> ![Gmail](https://skitch-img.s3.amazonaws.com/20111118-t3ymgae75ej1wr3rq5sbye4hyw.png)
+
+... and here’s what it looks like on the iPhone:
+
+> ![iPhone](https://skitch-img.s3.amazonaws.com/20111118-bjhp2c7jqf5ht9d7kx16dfqnhx.png)
 
 Not too shabby.
 
