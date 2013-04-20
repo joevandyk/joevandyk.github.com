@@ -6,7 +6,11 @@ group: navigation
 ---
 {% include JB/setup %}
 
-I'm the CTO / main programmer for Tanga.com. I live in Seattle. Three cats, two kids, one wife.
+I'm the CTO / main programmer for Tanga.com.
+
+I live in Seattle.
+
+Three cats, two kids, one wife.
 
 I enjoy photography and crossfit.
 
