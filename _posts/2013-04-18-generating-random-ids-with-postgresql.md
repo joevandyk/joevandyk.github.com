@@ -22,7 +22,14 @@ You would have
     2393939114 | murdoch
 
 You could use UUIDs, but that takes up additional storage space and can make URLs look funny.
-And you might need numeric IDs for some reason.
+And UUIDs are a bitch to type in. And they make barcodes long. 
+
+Randomized IDs are nice because it eliminate mistypes -- say you have 10,000 SKUs in a system
+and someone is typing in a SKU ID. If the codes are sequential, it's going to be easy to to 
+accidently enter the wrong ID, "1234" vs "1324". If the IDs are randomized with lots of space
+between the generated numbers, this problem largely goes away (at least, until you have more than
+a million SKUs).
+
 I've found the best way to do it is to define the following function:
 
     -- Taken from http://wiki.postgresql.org/wiki/Pseudo_encrypt
@@ -57,6 +64,9 @@ I've found the best way to do it is to define the following function:
 This is known as a [Feistel Cipher](http://en.wikipedia.org/wiki/Feistel_cipher).
 As you can see, given the same input, it'll create the same output. And there is 
 a 1:1 ratio of input to output.
+
+It only supports 32-bit input. I'm sure you could adjust it for 64-bit numbers, but that's more than
+I need at the moment.
 
 This means you can use a [sequence](http://www.postgresql.org/docs/9.2/static/sql-createsequence.html)
 combined with this function to get somewhat randomized IDs. 
