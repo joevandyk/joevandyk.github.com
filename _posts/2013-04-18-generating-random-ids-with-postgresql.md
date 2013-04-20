@@ -69,7 +69,7 @@ It only supports 32-bit input. I'm sure you could adjust it for 64-bit numbers, 
 I need at the moment.
 
 This means you can use a [sequence](http://www.postgresql.org/docs/9.2/static/sql-createsequence.html)
-combined with this function to get somewhat randomized IDs.
+combined with this function to get randomized, guaranteed-unique IDs.
 
     -- Create a sequence for generating the input to the pseudo_encrypt function
     create sequence random_int_seq;
