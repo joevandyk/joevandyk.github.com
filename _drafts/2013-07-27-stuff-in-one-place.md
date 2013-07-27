@@ -37,7 +37,7 @@ Mention scenarios for
 * analytical sql queries
 * getting too big? can move data to a tablespace or different db. postgresql_fdw for partitioning.
 * amazon ebs allows for 1 terabyte per tablespace. but ebs sucks. :(
-  m1.xlarge gives you 4x420 gig drives.
+  m1.xlarge gives you 4x420 gig drives. Probably good enough for 99.9% of sites.
 
 Disadvantages:
 
@@ -45,9 +45,23 @@ Disadvantages:
 * Single point of failure
 * Historical data becomes too big? Partitioning can probably solve this.
 
+Other things:
+
 You need to think about how much data you are storing and if it actually makes
 sense to split everything up across different services. Doing so makes it
 difficult to tie it back together. There are huge advantages to storing the
 data about your business/system in a single place. PostgreSQL is an amazing way
 to process and store all this data. You will have to learn SQL and relational
 theory. That's not a bad thing.
+
+Other thing, you can get good at *only one thing*: postgresql. No need to know
+and run many things. Don't have to have staff of people who know amqp, how to
+get redis backed up, the in and out's of Google Analytics, countless sync's
+over http's with various APIs. If you know postgresql and sql, you are good to
+go for most of what you need to do.
+
+Postgresql even has ways to communicate with other sites over http. I personally
+haven't used or looked at those yet, sorta scared to. I like Ruby + being able to
+write unit tests that mock out the http response with VCR.
+
+postgresql needs a better "common library" of functions/triggers.
