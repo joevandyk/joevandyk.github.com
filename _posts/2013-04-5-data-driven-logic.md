@@ -48,3 +48,5 @@ Now you can get the a list of the shipping method for each package pretty easily
     select shipping_methods.shipper, packages.package_id
     from packages
     join shipping_methods on packages.weight <@ shipping_methods.weight
+
+Note: I believe Joe Celko calls this "Thinking in Sets".
