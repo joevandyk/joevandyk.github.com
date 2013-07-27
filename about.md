@@ -12,7 +12,7 @@ I live in Seattle.
 
 Three cats, two kids, one wife.
 
-I enjoy photography and crossfit.
+I enjoy alcohol (IPAs and whiskey mostly), photography, and crossfit.
 
 - [my github](https://github.com/joevandyk)
 - [my work](https://www.tanga.com)
