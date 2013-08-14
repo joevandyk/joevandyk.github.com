@@ -8,7 +8,7 @@ tags: [postgresql]
 {% include JB/setup %}
 
 If data integrity is critical for your systems, you should be using UUIDs for keys.
-True, they take up a bit more space in storage and memory, and aren't quite as fast.
+True, they take up a bit more space in storage and memory and aren't quite as fast.
 But since UUIDs are by definition unique, your data is more likely to be consistent.
 
 An example:
