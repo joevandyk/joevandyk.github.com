@@ -22,7 +22,7 @@ An example:
     insert into orders (product_id)  select product_id from products;
     insert into orders (product_id)  select order_id from orders; -- OOPS! This worked! Should've failed!
 
-We accidently inserted bad data into the orders table in that second select. We should've
+We accidently inserted bad data into the orders table in that second insert. We should've
 been selecting from the products table, not the orders table. But because products and orders
 share the same numbers as IDs, postgresql didn't complain and let us insert incorrect data.
 
