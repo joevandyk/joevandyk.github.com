@@ -43,3 +43,8 @@ Let's fix this.
     -- DETAIL:  Key (product_id)=(a593fdde-e172-4546-8e7a-174a5bd9d94b) is not present in table "products".
 
 Now we aren't allowed to insert an incorrect key into the orders table.
+
+For more information on UUIDs in postgres:
+
+* <http://www.postgresql.org/docs/9.2/static/datatype-uuid.html>
+* <http://www.postgresql.org/docs/9.2/static/uuid-ossp.html>
