@@ -23,8 +23,9 @@ An example:
     insert into orders (product_id)  select order_id from orders; -- OOPS! This worked! Should've failed!
 
 We accidently inserted bad data into the orders table in that second insert. We should've
-been selecting from the products table, not the orders table. But because products and orders
-share the same numbers as IDs, postgresql didn't complain and let us insert incorrect data.
+been selecting from the `products` table, not the `orders` table. But because 
+the primary keys of `products` and `orders` share the same values, 
+postgresql didn't complain and let us insert incorrect data.
 
 Let's fix this.
 
@@ -42,7 +43,7 @@ Let's fix this.
     -- ERROR:  insert or update on table "orders" violates foreign key constraint "orders_product_id_fkey"
     -- DETAIL:  Key (product_id)=(a593fdde-e172-4546-8e7a-174a5bd9d94b) is not present in table "products".
 
-Now we aren't allowed to insert an incorrect key into the orders table.
+Now we aren't allowed to insert an incorrect `product_id` into the `orders` table.
 
 For more information on UUIDs in postgres:
 
