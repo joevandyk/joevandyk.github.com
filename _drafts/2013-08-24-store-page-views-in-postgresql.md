@@ -22,7 +22,7 @@ has good support for this sort of thing (rewrite this clumsy sentence).
         "sessions_pkey" PRIMARY KEY, btree (session_id)
         "sessions_created_at_idx" btree (created_at)
 
-Every user gets a session_id assigned to them. This is stored in a cookie. 
+Every user gets a `session_id` assigned to them. This is stored in a cookie. 
 
                                                  Table "analytics.page_views"
         Column    |           Type           |                                  Modifiers
@@ -53,10 +53,10 @@ Every user gets a session_id assigned to them. This is stored in a cookie.
         "page_views_user_id_fkey" FOREIGN KEY (user_id) REFERENCES users(id)
 
 
-Every page view is stored in this table. The page view is inserted after the page is generated.
-In Rails, we do this in an after_filter in the controller. 
+Every user's page view is stored in this table. The page view is inserted after the page is generated.
+In Rails, we do this in an `after_filter` in the controller. 
 
-page_views has a foreign key to the sessions table, so we can associated user sessions to page_views.
+`page_views` has a foreign key to the `sessions` table.
 We run multiple sites off the same database, so there's also a reference to the sites table.
 
 If the user is logged in, we store the user's id for each page view.
@@ -153,6 +153,11 @@ write SQL queries to figure out which bucket performed best.
 Which of our users are especially active today?
 * `select count(*), details->'product_id', p.name from analytics.page_views join products p on p.id = (details->'product_id')::integer where created_at > 'today' group by details->'product_id' order by 1 desc limit 30;`
 What products are most viewed today?
+* Want to know how many people came to our site via a promotion, placed an order as a guest, then made an account, 
+then placed two more orders for a pet-related product, then signed up for an email? Go for it.
+* We also store a copy of maxmind's geolocation database inside PostgreSQL -- an IP address range
+is associated to a city and state. This lets us figure out where our users are (since we store the IP address
+for each page view). 
 
 You can go absolutely nuts with analytical queries. It's *incredibly* useful to join your app's data
 against page view data. Most people use Google Analytics, but it can be a pain to join GA's data
@@ -161,6 +166,9 @@ of service to store unique user identifiers. If a user writes in saying they are
 something, you can't go to GA and look at what they did on the site. Good luck trying to figure out
 how much revenue *and* profit you've received from an affiliate via GA. Plus, most 3rd party analytic
 systems require javascript.
+
+This isn't hard to setup either. Copy/paste the table and function definitions into PostgreSQL, call
+the function after each page view, and you are golden. 
 
 Of course, there are downsides to this. The biggest one is performance and storage costs. If you have a
 really busy site, storing all the page view data can become cumbersome. But this isn't a problem for 99.9%
@@ -183,3 +191,6 @@ periodically).
 FWIW, storing 5 weeks of page views takes up 3.5 gigabytes for us (including indexes). I figure I have
 about a year before I'd need to start worrying about splitting the page view data into a separate database, 
 assuming our traffic keeps increasing at the current rate.
+
+Our company may be working with a graduate university team to build a UI for analyzing this data. 
+Essentially a mini Google Analytics tailored to our business. Hoping to open source it.
