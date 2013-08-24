@@ -149,9 +149,9 @@ credit the affiliate.
 Sometimes if a product is super popular, we want to know where that traffic is coming from.
 * This opens the way for AB testing. Sessions can be put into buckets and then it's simple to 
 write SQL queries to figure out which bucket performed best.
-* select count(*), user_id from analytics.page_views where user_id is not null and created_at > 'today' order by 1 desc limit 50; 
+* `select count(*), user_id from analytics.page_views where user_id is not null and created_at > 'today' order by 1 desc limit 50;`
 Which of our users are especially active today?
-* select count(*), details->'product_id', p.name from analytics.page_views join products p on p.id = (details->'product_id')::integer where created_at > 'today' group by details->'product_id' order by 1 desc limit 30;
+* `select count(*), details->'product_id', p.name from analytics.page_views join products p on p.id = (details->'product_id')::integer where created_at > 'today' group by details->'product_id' order by 1 desc limit 30;`
 What products are most viewed today?
 
 You can go absolutely nuts with analytical queries. It's *incredibly* useful to join your app's data
