@@ -72,7 +72,7 @@ We track user agents, referral url, and the http method as well. The http method
 as an enum that contains all the http methods (get, post, options, etc). 
 
 We also use the details hstore to store arbitary information about the page view. For example, 
-if they are viewing a product, we store 'product_id' => '3893'. 
+if they are viewing a product, we store `'product_id' => '3893'`. 
 
 When someone places an order, we store a reference to the current session_id.
 Since we store the session_id for each of the page views, we can then track the complete path
